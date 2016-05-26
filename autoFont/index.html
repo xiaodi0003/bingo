@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery数字跳动Animate Number插件 - 【科e互联】</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body class="keBody">
+<h1 class="keTitle">jQuery数字跳动Animate Number插件</h1>
+<div class="kePublic">
+<!--效果html开始-->
+<p style="height:100px;">Fun level <span id="target" style="font-size: 10px; color: red;">0 %</span>.</p>
+<div class="test" style="background-color: red; height:3px; overflow:hidden"></div>  
+<script src="js/jquery-1.7.0.min.js"></script> 
+<script src="js/jquery.color.min.js"></script> 
+<script src="js/jquery.animateNumber.min.js"></script> 
+<script>
+  var decimal_places = 1;
+  var decimal_factor = decimal_places === 0 ? 1 : decimal_places * 10;
+
+  $('#target').animateNumber(
+    {
+      number: 100 * decimal_factor,
+      color: 'green',
+      'font-size': '30px',
+
+      numberStep: function(now, tween) {
+        var floored_number = Math.floor(now) / decimal_factor,
+            target = $(tween.elem);
+        if (decimal_places > 0) {
+          floored_number = floored_number.toFixed(decimal_places);
+        }
+
+        target.text(floored_number + ' %');
+      }
+    },
+    15000
+  )
+</script>
+<script type="text/javascript">  
+var $div = $(".test").animate({"background-color": 'green'}, 15000);  
+</script>  
+<!--效果html结束-->
+<div class="clear"></div>
+</div>
+<div class="keBottom">
+<p class="keTxtP">科e互联网页特效集锦---更多特效请访问 <a class="keUrl" href="http://www.internetke.com" target="_blank">www.internetke.com</a></p>
+<p class="keTxtP">本站导航：
+<a href="http://www.internetke.com/" target="_blank" class="cor_bs">网站建设</a> | 
+<a href="http://www.internetke.com/material/" target="_blank" class="cor_bs">网页素材</a> | 
+<a href="http://www.internetke.com/effects/" target="_blank" class="cor_bs">网页特效</a> | 
+<a href="http://www.internetke.com/share/" target="_blank" class="cor_bs">设计分享</a> | 
+<a href="http://www.internetke.com/tutorial/" target="_blank" class="cor_bs">建站教程</a> | 
+<a href="http://www.internetke.com/model/" target="_blank" class="cor_bs">网站模版</a> | 
+<a href="http://www.internetke.com/appreciate/" target="_blank" class="cor_bs">酷站赏析</a>
+</p>
+<p class="keTxtP">＊尊重他人劳动成果，转载请自觉注明出处！注：此代码为【科e整理/原创特效】仅供学习交流，请勿用于商业用途。
+<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=a7df3558c291e0407375b9ad649d96a6e507286ffeb0650c65a221d1500a0779" class="button red" title="北京网站建设,网页特效QQ交流群-科e互联">加入QQ交流群</a></p>
+</div>
+</body>
+</html>
